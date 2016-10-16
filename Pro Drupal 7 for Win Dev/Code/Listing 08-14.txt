@@ -1,0 +1,8 @@
+Listing 8-14. Posting to a form on a block and verifying the results
+function testUserLocationChange() {
+  $edit = array (
+    'weather_location' => 'manhattan',
+    );
+  $this->drupalPost('/', $edit, 'Search');
+  $this->assertRaw(t('New York, NY'), t('Check that the location was found'));
+}

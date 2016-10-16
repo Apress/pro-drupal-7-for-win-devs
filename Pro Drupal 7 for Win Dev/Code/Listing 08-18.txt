@@ -1,0 +1,23 @@
+Listing 8-18. The setup function for testing weather information settings
+class WeatherSettingsTest extends DrupalWebTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Weather default tests',
+      'description' => 'Tests default settings and weather display.',
+      'group' => 'Weather info',
+      );
+  }
+
+  public function setUp() {
+    // Enable any modules required for the test
+    parent::setUp(array('weather_info')); 
+    // Create and log in our privileged user.
+    $this->privileged_user = $this->drupalCreateUser(array(
+      'view weather info',
+      'administer weather info',
+      'administer site configuration', 
+      'access administration pages',
+      ));
+    $this->drupalLogin($this->privileged_user);
+  }

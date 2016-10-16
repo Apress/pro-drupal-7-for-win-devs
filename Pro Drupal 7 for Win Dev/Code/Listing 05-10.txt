@@ -1,0 +1,4 @@
+•	Listing 5-10: The weather_info_temp helper function
+function weather_info_temp($in_temp, $unit, $unit_system) {
+  return sprintf('%s&deg;%s', $in_temp, $unit);
+}

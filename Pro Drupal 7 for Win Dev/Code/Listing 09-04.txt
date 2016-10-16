@@ -1,0 +1,6 @@
+Listing 9-4: the db_query() function
+  $result = db_query("SELECT nid AS my_nid, title FROM {node}");
+  foreach ($result as $record) {
+    $nid = $record->my_nid;
+    $title = $record->title;
+  }

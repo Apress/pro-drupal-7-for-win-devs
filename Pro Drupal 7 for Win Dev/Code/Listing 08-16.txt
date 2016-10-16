@@ -1,0 +1,12 @@
+Listing 8-16. Adding values to the profile fields
+$uid = $this->test_user->uid;
+
+$edit = array (
+  'field_weather_location[und][0][value]' => 'san francisco',
+  'field_weather_language[und]' => 'en',
+  'field_weather_unit[und]' => 'F',
+  );
+
+$this->drupalPost("user/{$uid}/edit/", $edit, 'Save');
+$this->assertRaw(t('The changes have been saved.'), 
+  t('Check that profile was updated'));

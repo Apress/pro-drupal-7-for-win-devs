@@ -1,0 +1,10 @@
+•	Listing 5-13: A single element and its descendants
+
+<current_conditions>
+  <condition data="Mostly Cloudy"/>
+  <temp_f data="68"/>
+  <temp_c data="20"/>
+  <humidity data="Humidity: 68%"/>
+  <icon data="/ig/images/weather/mostly_cloudy.gif"/>
+  <wind_condition data="Wind: S at 10 mph"/>
+</current_conditions>

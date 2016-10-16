@@ -1,0 +1,14 @@
+Listing 9-18: Chaining normal and random ordering
+$query = db_select('block', 'b');
+$query
+  ->condition('b.region', -1, '<>')
+  ->fields('b', array('region', 'module', 'delta'));
+$query->orderBy('module')->orderRandom();
+$result = $query->execute();
+  
+foreach ($result as $record) {
+  $region = $record->region;
+  $module = $record->module;
+  $delta = $record->delta;
+  print($region . ', ' . $module . ', ' . $delta . '<br>');
+}

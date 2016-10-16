@@ -1,0 +1,7 @@
+13.	Listing 2-13: A typical init hook
+function tablesort_init($header) {
+  $ts = tablesort_get_order($header);
+  $ts['sort'] = tablesort_get_sort($header);
+  $ts['query'] = tablesort_get_query_parameters();
+  return $ts;
+}

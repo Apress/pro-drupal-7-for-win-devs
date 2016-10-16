@@ -1,0 +1,22 @@
+•	Listing 5-4: A Drupal form to get a piece of information from the user
+function weather_location_form($form_in, &$form_state) {
+  $form['wx_info_title'] = array (
+    '#value' => t('Location'),	
+    );
+
+  $form['wx_info']['weather_location'] = array (
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#maxlengh' => 20,
+    );
+
+  $form['wx_info']['weather_location_submit'] = array (
+    '#type' => 'submit',
+    '#value' => t('Search'),
+    );
+  
+  $form['#action'] = '/';
+  
+  return $form;
+}
+

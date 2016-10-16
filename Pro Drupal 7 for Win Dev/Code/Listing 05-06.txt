@@ -1,0 +1,7 @@
+•	Listing 5-6: Our hook_validate function
+function weather_location_form_validate($form, $form_state) {
+  $location = trim($form_state['values']['weather_location']);
+  if (!$location) {
+    form_set_error('weather_location', t('Location cannot be blank.'));
+  }
+}

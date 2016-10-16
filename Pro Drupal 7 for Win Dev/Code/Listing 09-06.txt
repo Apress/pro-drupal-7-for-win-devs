@@ -1,0 +1,14 @@
+Listing 9-6: Using arrays in a placeholder
+$result = db_query (
+  'SELECT title, created '
+  . 'FROM {node} '
+  . 'WHERE uid IN (:uids)'
+  , array(
+      ':uids' => array(1, 3, 5, 7, 11),
+      )
+    );
+
+foreach ($result as $record) {
+  $title = $record->title;
+  $created = $record->created;
+}

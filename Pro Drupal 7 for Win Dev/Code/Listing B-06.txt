@@ -1,0 +1,6 @@
+Listing B-6. CSS Code for Attaching a Graphic to an Identified DIV
+#region-branding {
+ background: transparent url('../i/CDEF-name.png') no-repeat right top;
+ min-height :131px;
+ float:right;
+}

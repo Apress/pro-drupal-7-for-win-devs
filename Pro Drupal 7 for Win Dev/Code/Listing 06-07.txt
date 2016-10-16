@@ -1,0 +1,80 @@
+•	Listing 6-7: The weather information block view function
+function weather_info_block_view($delta='') {
+  if (!user_access('view weather info')) {
+    return null;
+  }
+
+  $block = null;
+  $block_content = null;
+
+  global $user;
+
+  $user_profile = user_load($user->uid);
+  if (isset($user_profile->field_weather_unit['und'][0]['value'])
+    && ($user_profile->field_weather_unit['und'][0]['value'] != '')) {
+      $unit = substr($user_profile->field_weather_unit['und'][0]['value'], 0, 1);
+    }
+    else {
+      $unit = variable_get('default_units', 'F');
+    }
+
+    if (isset($user_profile->field_weather_language['und'][0]['value']) 
+      && ($user_profile->field_weather_language['und'][0]['value'] != '')) {
+      $language = substr($user_profile->field_weather_language['und'][0]['value'], 0, 2);
+    }
+    else {
+      $language = variable_get('default_language', 'en');
+    }
+
+    if (isset($user_profile->field_weather_location['und'][0]['value']) 
+      && ($user_profile->field_weather_location['und'][0]['value'] != '')) {
+      $location = $user_profile->field_weather_location['und'][0]['value'];
+    }
+    else {
+      $location = variable_get('default_location', null);
+    }
+
+    if ($location) {
+      $weather = weather_info_get_weather($location, $language);
+      if ($weather) {
+        $unit_system = $weather->weather->forecast_information->unit_system['data'];
+        $current = $weather->weather->current_conditions;
+
+        $block_content .= theme('current', 
+          array(
+            'img' => $current->icon['data'],
+            'condition' => $current->condition['data'],
+            'temp' => $current->temp_f['data'],
+            'unit' => $unit,
+            'wind' => $current->wind_condition['data'],
+            'humidity' => $current->humidity['data'],
+            )
+          );
+
+        foreach($weather->weather->forecast_conditions as $new) {
+          $block_content .= theme('forecast', 
+            array(
+              'day' => $new->day_of_week['data'],
+              'img' => $new->icon['data'],
+              'high' => weather_info_temp($new->high['data'], $unit, $unit_system),
+              'low' => weather_info_temp($new->low['data'], $unit, $unit_system),
+              )
+            );
+        }
+        $block['subject'] = $weather->weather->forecast_information->city['data'];
+      }
+      else {
+        form_set_error('weather_location', 
+          t('Location @loc not found.', array('@loc' => $location)));
+        variable_set('current_location', null);
+        $block['subject'] = t('Get Weather');
+      }
+    }
+
+    if (user_access('change weather location')) {
+      $temp = drupal_get_form('weather_location_form');
+      $block_content .= drupal_render($temp);
+    }
+    $block['content'] = $block_content;
+    return $block;
+}

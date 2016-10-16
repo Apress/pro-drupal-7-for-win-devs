@@ -1,0 +1,16 @@
+Listing 9-27: The degenerate form of db_insert()
+$hid = db_insert('weather_info')
+  ->fields(array(
+      'location', 
+      'language', 
+      'units', 
+      'uid', 
+      'timestamp'))
+  ->values(array(
+      'location' => 'San Luis Obispo', 
+      'language' => 'en',
+      'units' => 'R',
+      'uid' => 1,
+      'timestamp' => REQUEST_TIME,
+      ))
+  ->execute();

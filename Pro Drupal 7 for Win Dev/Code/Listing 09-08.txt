@@ -1,0 +1,2 @@
+Listing 9-8: Using the LIMIT keyword
+$nodes = db_query('SELECT title FROM {node} LIMIT 0, 10')->fetchObject();

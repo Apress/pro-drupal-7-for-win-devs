@@ -1,0 +1,2 @@
+LIsting 9-9: Using the db_query_range function
+$result = db_query_range('SELECT title FROM {node}', 0, 10);

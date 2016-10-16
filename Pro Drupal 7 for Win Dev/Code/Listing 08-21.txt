@@ -1,0 +1,10 @@
+Listing 8-21. Code with a typographical error
+  $form['wx_settings']['default_location'] = array (
+    '#type' => 'textfield',
+    '#title' => t('Default location'),
+    '#default_value' => variable_get('default_location', null),
+    '#size' => 20,
+    '#maxlengh' => 20,
+    '#description' => t('Enter a location on earth to act as the default for the site.'),
+    );	
+

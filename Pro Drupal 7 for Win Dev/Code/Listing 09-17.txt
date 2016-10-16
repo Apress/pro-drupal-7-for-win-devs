@@ -1,0 +1,15 @@
+Listing 9-17: Ordering of a record set
+$query = db_select('node', 'n')
+  ->condition('n.created', time() - (14 * 86400), '>');
+$query->fields('n', array('title', 'type', 'created'));
+$query->orderBy('title', 'ASC');
+$result = $query->execute();
+  
+foreach ($result as $record) {
+  $name = $record->title;
+  $type = $record->type;
+  $created = $record->created;
+  print($name . ' (' . $type . ')'
+    . ' created: ' . date("D, j M, Y \a\\t G:i", $created)
+    . '<br>');
+}

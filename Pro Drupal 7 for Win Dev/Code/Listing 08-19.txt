@@ -1,0 +1,23 @@
+Listing 8-19. Setting default values and checking for their persistence
+function testWeatherDefaults () {
+  $default_location = 'Boise';
+  $default_units = 'F';
+  $default_language = 'en';
+
+  $edit['default_location'] = $default_location;
+  $edit['default_units'] = $default_units;
+  $edit['default_language'] = $default_language;
+
+  $this->drupalPost('admin/config/weather_info/settings', $edit, t('Save configuration'));
+  $this->assertRaw(t('The configuration options have been saved.'),
+    t('Check that configuration is saved'));
+
+  $this->assertEqual(variable_get('default_location'), $default_location,
+    t('Default location variable'));
+  $this->assertEqual(variable_get('current_location'), $default_location,
+    t('Current location variable'));
+  $this->assertEqual(variable_get('default_units'), $default_units,
+    t('Default unit variable'));
+  $this->assertEqual(variable_get('default_language'), $default_language,
+    t('Default language variable'));
+}

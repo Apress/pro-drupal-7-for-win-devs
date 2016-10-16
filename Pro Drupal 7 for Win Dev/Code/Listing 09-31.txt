@@ -1,0 +1,4 @@
+Listing 9-31: The db_delete() function
+$rows_deleted = db_update('weather_info')
+  ->condition('location', 'San Luis Obispo', '=')
+  ->execute();

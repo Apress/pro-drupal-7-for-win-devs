@@ -1,0 +1,10 @@
+Listing 8-2. The information file additions for a test suite
+; $Id$
+name = Weather information
+description = A block that shows current weather for a particular location.
+package = Cool stuff from Brian
+core = 7.x
+files[] = weather_info.module
+files[] = weather_info.inc
+files[] = tests/weather_info.test
+version = 7.x-1.x

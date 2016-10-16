@@ -1,0 +1,16 @@
+Listing 8-20. Testing the length of a field
+function testMaxlengthFail () {
+  // this should fail because the location is longer than 20 characters
+  $default_location = 'San Francisco, California';
+  $default_units = 'C';
+  $default_language = 'es';
+
+  $edit['default_location'] = $default_location;
+  $edit['default_units'] = $default_units;
+  $edit['default_language'] = $default_language;
+
+  $this->drupalPost('admin/config/weather_info/settings', $edit, 
+    t('Save configuration'));
+  $this->assertRaw(t('Default location cannot be longer than 20 characters'), 
+    t('Check length error'));
+}

@@ -1,0 +1,8 @@
+•	Listing 5-1: the .info file tells Drupal important information about a module
+; $Id$
+name = Weather information
+description = A block that shows current weather for a particualr location.
+package = Cool stuff from Brian
+core = 7.x
+files[] = weather_info.module
+version = 7.x-0.as-alpha-as-it-gets

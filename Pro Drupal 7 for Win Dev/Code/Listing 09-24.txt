@@ -1,0 +1,11 @@
+Listing 9-24: The db_insert() function provides a database-agnostic insert
+$fields = array(
+  'location' => 'San Luis Obispo', 
+  'language' => 'en',
+  'units' => 'R',
+  'uid' => 1,
+  'timestamp' => REQUEST_TIME,
+  );
+$hid = db_insert('weather_info')
+  ->fields($fields)
+  ->execute();

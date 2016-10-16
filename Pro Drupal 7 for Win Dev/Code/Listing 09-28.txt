@@ -1,0 +1,31 @@
+Listing 9-28: Executing a multiple-record insert
+$hid = db_insert('weather_info')
+  ->fields(array(
+      'location', 
+      'language', 
+      'units', 
+      'uid', 
+      'timestamp'
+      ))
+  ->values(array(
+      'San Luis Obispo', 
+      'en',
+      'R',
+      1,
+      REQUEST_TIME,
+      ))
+  ->values(array(
+      'Cupertino', 
+      'en',
+      'F',
+      1,
+      REQUEST_TIME,
+      ))
+  ->values(array(
+      'San Diego', 
+      'es',
+      'C',
+      1,
+      REQUEST_TIME,
+      ))
+  ->execute();

@@ -1,0 +1,4 @@
+Listing 8-8. Creating an instance of the DrupalWebTestCase class
+class WeatherBlockTest extends DrupalWebTestCase {
+...
+}

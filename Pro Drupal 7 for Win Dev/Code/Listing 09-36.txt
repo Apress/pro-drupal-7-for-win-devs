@@ -1,0 +1,5 @@
+Listing 9-36: Conditions can be nested
+$query
+  ->condition('field1', array(1, 2), 'IN')
+  ->condition(db_or()->condition('field2', 5)->condition('field3', 6));
+// Becomes: (field1 IN (1, 2) AND (field2 = 5 OR field3 = 6))

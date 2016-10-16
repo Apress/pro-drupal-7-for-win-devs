@@ -1,0 +1,12 @@
+•	Listing 6-4: Element validation function
+function weather_info_profile_weather_location_validate($element, &$form_state) {
+  $location = $form_state['values']['field_weather_location']['und'][0]['value'];
+  if (variable_get('default_location') != $location) {
+    $weather = weather_info_get_weather($location, 'en');
+    if (!$weather) {
+      form_set_error('field_weather_location[und][0][value]', 
+        t('Cannot get weather for %location.', 
+        array('%location' => $location)));     
+    }
+  }
+}

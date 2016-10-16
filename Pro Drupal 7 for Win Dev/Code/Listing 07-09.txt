@@ -1,0 +1,30 @@
+9.	Listing 7-9. Rewritten code inside the block hook in order to use the theme functions
+if ($weather) {
+  $unit_system = $weather->weather->forecast_information->unit_system['data'];
+  $current = $weather->weather->current_conditions;
+
+  $block_content .= theme('current', 
+    array(
+        'img' => $current->icon['data'],
+        'condition' => $current->condition['data'],
+        'temp' => $current->weather_info_temp_f['data'],
+        'unit' => $unit,
+        'wind' => $current->wind_condition['data'],
+        'humidity' => $current->humidity['data'],
+        )
+      );
+
+  foreach($weather->weather->forecast_conditions as $new) {
+    $block_content .= theme('forecast', 
+      array(
+          'day' => $new->day_of_week['data'],
+          'img' => $new->icon['data'],
+          'high' => weather_info_temp($new->high['data'], $unit,
+            $unit_system),
+          'low' => weather_info_temp($new->low['data'], $unit, 
+            $unit_system),
+          )
+        );
+  }
+  $block['subject'] = $weather->weather->forecast_information->city['data'];
+}

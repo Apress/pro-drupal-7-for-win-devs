@@ -1,0 +1,23 @@
+7.	Listing 2-7: The session initialization function
+function drupal_session_initialize() {
+  global $user, $is_https;
+
+  session_set_save_handler('_drupal_session_open',
+    '_drupal_session_close', '_drupal_session_read',
+    '_drupal_session_write', '_drupal_session_destroy',
+    '_drupal_session_garbage_collection');
+
+  if (!empty($_COOKIE[session_name()]) 
+    || ($is_https && variable_get('https', FALSE) 
+    && !empty($_COOKIE[substr(session_name(), 1)]))) {
+    drupal_session_start();
+    if (!empty($user->uid) || !empty($_SESSION)) {
+      drupal_page_is_cacheable(FALSE);
+    }
+  }
+  else {
+    $user = drupal_anonymous_user();
+    session_id(drupal_hash_base64(uniqid(mt_rand(), TRUE)));
+  }
+  date_default_timezone_set(drupal_get_user_timezone());
+}

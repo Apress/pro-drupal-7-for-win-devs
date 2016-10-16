@@ -1,0 +1,6 @@
+Listing 9-11: Static query with a join
+$result = db_query('SELECT u.name, u.mail n.title, n.type '
+  . 'FROM {node} n '
+  . 'INNER JOIN {users} u on u.uid = n.uid'
+  . 'WHERE u.uid=:uid'.
+  array(':uid' => $user->uid));

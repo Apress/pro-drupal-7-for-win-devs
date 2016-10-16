@@ -1,0 +1,15 @@
+Listing 9-10: Dynamic query for SELECT
+$query = db_select('node', 'n');
+$query
+  ->condition('n.uid', 0, '<>')
+  ->fields('n', array('nid', 'title', 'type', 'created'))
+  ->range(0, 5);
+$result = $query->execute();
+
+foreach ($result as $record) {
+  $title = $record->title;
+  $type = $record->type;
+  $created = $record->created;
+  print($title . ' (' . $type . ') created: ' 
+    . date("D, j M, Y \a\\t G:i", $created) . '<br>');
+}

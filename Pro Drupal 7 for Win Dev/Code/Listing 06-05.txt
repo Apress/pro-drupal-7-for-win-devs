@@ -1,0 +1,5 @@
+•	Listing 6-5: The form alter function
+function weather_info_form_user_profile_form_alter(&$form, &$form_state) {
+  $form['profile_weather_location']['#element_validate'][] = 
+    'weather_info_profile_weather_location_validate';
+}

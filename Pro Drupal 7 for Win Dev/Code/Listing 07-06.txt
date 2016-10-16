@@ -1,0 +1,20 @@
+6.	Listing 7-6. The theme function is a convenient place to generate HTML
+function theme_current($variables) {
+  $img = $variables['img'];
+  $condition = $variables['condition'];
+  $temp = $variables['temp'];
+  $unit = $variables['unit'];
+  $wind = $variables['wind'];
+  $humidity = $variables['humidity'];
+
+  $content = null;
+  $content .= '<div class="currentConditions">';
+  $content .= "<img src='http://www.google.com{$img}'/><br/>";
+  $content .= sprintf('%s, %s<br/>',
+    $condition, weather_info_temp($temp, $unit, 'US'));
+  $content .= $wind . '<br/>';
+  $content .= $humidity;
+  $content .= '</div>';
+  return $content;
+}
+

@@ -1,0 +1,13 @@
+•	Listing 3-1: PHP classes are declared using the class keyword
+<?php
+
+class NewClass
+{
+  // property declaration
+  public $var = 'some default value';
+
+  // method declaration
+  public function showProperty() {
+    return $this->var;
+  }
+}

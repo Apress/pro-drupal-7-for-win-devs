@@ -1,0 +1,9 @@
+Listing B-5. CSS Block for Document Body
+body {
+  background: url('../i/CDEF-background-960.jpg') center top black;
+  background-repeat:repeat-x;
+  background-attachment:fixed;
+  color:#f1f1ef;
+  font-family:Arial;
+  font-size:12pt;
+}

@@ -1,0 +1,4 @@
+12.	Listing 7-12. Hooking into the page preprocessor from a theme template
+function first_subtheme_preprocess(&$vars) {
+  $vars['theme_secret_word'] = 'duck';
+}

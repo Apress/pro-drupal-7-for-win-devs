@@ -1,0 +1,4 @@
+Listing B-17. The Theme Template Program
+<div id="recent-block">
+  <?php print $content; ?>
+</div>

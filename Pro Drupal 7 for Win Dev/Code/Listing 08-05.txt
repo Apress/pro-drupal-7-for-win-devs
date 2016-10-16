@@ -1,0 +1,34 @@
+Listing 8-5. A unit test suite to exercise the temperature conversion functions.
+class WeatherTempTest extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => t('Temperature tests'),
+      'description' => t('Tests temperature conversions.'),
+      'group' => 'Weather info',
+      );
+  }
+
+  function testFtoC() {
+    $out_temp = weather_info_temp(32, 'C', 'US');
+    $this->assertEqual($out_temp, '0&deg;C', t('F to C conversion.'));
+
+    $out_temp = weather_info_temp(32, 'F', 'US');
+    $this->assertEqual($out_temp, '32&deg;F', t('F to F conversion.'));
+
+    $out_temp = weather_info_temp(10, 'C', 'SI');
+    $this->assertEqual($out_temp, '10&deg;C', t('C to C conversion.'));
+
+    $out_temp = weather_info_temp(32, 'K', 'US');
+    $this->assertEqual($out_temp, '273&deg;K', t('F to K conversion.'));
+
+    $out_temp = weather_info_temp(10, 'K', 'SI');
+    $this->assertEqual($out_temp, '283&deg;K', t('C to K conversion.'));
+
+    $out_temp = weather_info_temp(32, 'R', 'US');
+    $this->assertEqual($out_temp, '492&deg;R', t('F to R conversion.'));
+
+    $out_temp = weather_info_temp(10, 'R', 'SI');
+    $this->assertEqual($out_temp, '510&deg;R', t('C to R conversion.'));
+  }
+}

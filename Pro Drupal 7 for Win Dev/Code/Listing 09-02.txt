@@ -1,0 +1,14 @@
+Listing 9-2: The $databases array in settings.php
+$databases = array (
+  'default' => array (
+    'default' => array (
+      'driver' => 'mysql',
+      'database' => 'drupal7',
+      'username' => 'brian',
+      'password' => 'super-secret-password',
+      'host' => 'localhost',
+      'port' => '',
+      'prefix' => '',
+    ),
+  ),
+);

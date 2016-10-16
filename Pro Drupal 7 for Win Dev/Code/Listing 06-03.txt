@@ -1,0 +1,6 @@
+•	Listing 6-3: Checking to see if a user has access to change a location
+
+  if (user_access('change weather location')) {
+    $temp = drupal_get_form('weather_location_form');
+    $block_content .= drupal_render($temp);
+  }

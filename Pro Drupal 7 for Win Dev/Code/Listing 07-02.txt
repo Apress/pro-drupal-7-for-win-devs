@@ -1,0 +1,7 @@
+2.	Listing 7-2: Hiding regions from the Blocks administration page
+regions[content] = Content
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[indicators] = Indicators
+regions_hidden[] = indicators

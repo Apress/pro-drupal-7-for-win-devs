@@ -1,0 +1,15 @@
+Listing B-14. Declaring a Theme Function in the Theme Hook
+/**
+ * Implements hook_theme().
+ */
+function cdef_omega_theme(&$existing, $type, $theme, $path) {
+  $hooks = array(
+    'recent_list' => array(
+        'arguments' => array(
+          'node-title' => NULL,
+          'node-id' => NULL,
+          )
+        )
+      );
+  return $hooks;
+}

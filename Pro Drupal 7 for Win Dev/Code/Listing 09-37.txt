@@ -1,0 +1,6 @@
+Listing 9-37: Determining nullness
+$query->isNull('language');
+// Becomes (language IS NULL)
+
+$query->isNotNull('language');
+// Becomes: (language IS NOT NULL)

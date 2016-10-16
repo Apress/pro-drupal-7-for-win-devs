@@ -1,0 +1,6 @@
+14.	Listing 7-14: Including variables in a template file
+
+<?php print $page_top; ?>
+<i><?php print "(html.tpl.php)The secret word (from theme) is: $theme_secret_word" ?></i><br/>
+<i><?php print "(html.tpl.php)The secret word (from module) is: $module_secret_word" ?></i><br/>
+<?php print $page; ?>

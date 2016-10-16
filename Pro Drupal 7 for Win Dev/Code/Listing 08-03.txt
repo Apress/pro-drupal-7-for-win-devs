@@ -1,0 +1,12 @@
+Listing 8-3. Skeleton for a unit test case
+class WeatherTempTest extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Temperature tests',
+      'description' => 'Tests temperature conversions.',
+      'group' => 'Weather info',
+      );
+  }
+// tests go here
+}

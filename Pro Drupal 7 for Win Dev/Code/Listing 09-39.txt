@@ -1,0 +1,22 @@
+Listing 9-39: Transactions in action
+$txn = db_transaction();
+
+try {
+  $records_merged = db_merge('weather_info')
+    ->key(array('location' => 'San Francisco, ZA'))
+    ->fields(array(
+        'location' => 'San Francisco, CA',
+        'language' => 'us',
+        ))
+    ->updateFields(array(
+        'language' => 'es',
+        ))
+    ->execute();
+}
+  
+catch(exception $err) {
+  drupal_set_message('Whoops! Trouble merging data: ' . 
+    $err->xdebug_message, 'error');
+  $txn->rollback();
+}
+

@@ -1,0 +1,11 @@
+3.	Listing 7-3: All stylesheets must be included in the .info file.
+name = My First Subtheme
+description = My first subtheme, based on Bartik.
+core = 7.x
+base theme = bartik
+
+stylesheets[all][] = first_subtheme.css
+
+regions[header] = Header
+regions[help] = Help
+...

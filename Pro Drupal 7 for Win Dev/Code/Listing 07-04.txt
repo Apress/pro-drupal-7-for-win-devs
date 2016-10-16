@@ -1,0 +1,6 @@
+4.	Listing 7-4. The CSS file defines classes
+.currentConditions {
+  font-family:Arial Narrow;
+  text-align:center;
+  font-size:12pt;
+}

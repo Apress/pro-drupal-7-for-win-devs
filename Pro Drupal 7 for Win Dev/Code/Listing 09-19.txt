@@ -1,0 +1,18 @@
+Listing 9-19: Using the groupBy() method
+$query = db_select('block', 'b');
+$query
+  ->condition('b.region', -1, '<>')
+  ->fields('b', array('region', 'module', 'delta'));
+$query->addExpression('COUNT(region)', 'count');
+$query->orderBy('region');
+$query->orderBy('module');
+$query->groupBy('region');
+$result = $query->execute();
+    
+foreach ($result as $record) {
+  $region = $record->region;
+  $module = $record->module;
+  $delta = $record->delta;
+  $count = $record->count;
+  print('(' . $count . ') ' . $region . ', ' . $module . ', ' . $delta . '<br>');
+}

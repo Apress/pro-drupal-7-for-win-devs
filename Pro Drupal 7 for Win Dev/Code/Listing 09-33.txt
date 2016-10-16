@@ -1,0 +1,14 @@
+Listing 9-33: Adding the updateFields() object
+$records_merged = db_merge('weather_info')
+  ->key(array('location' => 'San Francisco, CA'))
+  ->fields(array(
+      'location' => 'San Francisco, CA',
+      'language' => 'us',
+      'units' => 'F',
+      'uid' => 1,
+      'timestamp' => REQUEST_TIME,
+      ))
+  ->updateFields(array(
+      'language' => 'es',
+      ))
+  ->execute();

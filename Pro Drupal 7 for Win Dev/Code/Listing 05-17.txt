@@ -1,0 +1,21 @@
+•	Listing 5-17: Validate and submit hooks for the weather administration settings form
+function wx_admin_settings_validate($form, &$form_state) {
+  $location = $form_state['values']['default_location'];
+  if ($location) {
+    $weather = weather_info_get_weather($location, 'en');
+    if (!$weather) {
+      form_set_error('default_location', t('Location %location not found.', 
+        array('%location' => $location)));
+    }
+  }
+  else {
+    form_set_error('default_location', t('Location cannot be blank.'));
+  }
+}
+
+function wx_admin_settings_submit($form, &$form_state) {
+  variable_set('default_units', $form_state['values']['default_units']);
+  variable_set('default_language', $form_state['values']['default_language']);
+  variable_set('default_location', $form_state['values']['default_location']);
+  variable_set('current_location', $form_state['values']['default_location']);
+}

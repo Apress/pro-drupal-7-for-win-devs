@@ -1,0 +1,25 @@
+Listing B-10. Placing the Main Menu Where It Belongs
+#region-preface_second {
+  position:relative;
+  top:276px;
+  left:10px;
+}
+
+#block-system-main-menu ul.menu {
+  font-weight:bold;
+  font-size:16pt;
+  margin: 0;
+  padding: 0;
+  list-style-type:none;
+  text-transform:uppercase;
+}
+
+#block-system-main-menu ul.menu li {
+  padding: .2em;
+  display:inline;
+}
+
+#block-system-main-menu ul.menu li a {
+  text-decoration: none;
+  color:#f1f1ef;
+}

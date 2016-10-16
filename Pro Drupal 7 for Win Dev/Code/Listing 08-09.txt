@@ -1,0 +1,7 @@
+Listing 8-9. Extending the DrupalWebTestCase class
+public function setUp() {
+  // Enable any modules required for the test
+  parent::setUp(array(
+    'weather_info', 
+    'block',
+  )); 

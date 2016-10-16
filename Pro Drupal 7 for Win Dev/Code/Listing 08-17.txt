@@ -1,0 +1,4 @@
+Listing 8-17: Testing that the block read from the user’s profile
+$this->drupalGet('node');
+$this->assertRaw(t('San Francisco, CA'), 
+  t('Check that the user location displayed'));

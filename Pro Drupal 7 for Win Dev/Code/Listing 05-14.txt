@@ -1,0 +1,27 @@
+•	Listing 5-14: HTML generated from the block_view hook
+<div class="currentConditions">
+  <img src='http://www.google.com//ig/images/weather/sunny.gif'/><br/>
+  Rain, 57&deg;F<br/>
+  Wind: W at 8 mph<br/>
+  Humidity: 100%
+</div>
+<div class="forecast-1">
+Fri<br/>
+  <img src='http://www.google.com//ig/images/weather/mostly_sunny.gif'/><br/>
+  60&deg;F/51&deg;F<br/>
+</div>
+<div class="forecast-2">
+  Sat<br/>
+  <img src='http://www.google.com//ig/images/weather/mostly_sunny.gif'/><br/>
+  69&deg;F/50&deg;F<br/>
+</div>
+<div class="forecast-3">
+  Sun<br/>
+  <img src='http://www.google.com//ig/images/weather/chance_of_storm.gif'/><br/>
+  75&deg;F/53&deg;F<br/>
+</div>
+<div class="forecast-4">
+  Mon<br/>
+  <img src='http://www.google.com//ig/images/weather/chance_of_storm.gif'/><br/>
+  77&deg;F/59&deg;F<br/>
+</div>

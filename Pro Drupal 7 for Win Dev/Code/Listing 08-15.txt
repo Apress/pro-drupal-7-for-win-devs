@@ -1,0 +1,90 @@
+Listing 8-15. Attaching fields to the user entity
+// *
+// * Weather location field
+// *
+$field = array(
+  'field_name' => 'field_weather_location',
+  'type' => 'text',
+  'translatable' => TRUE,
+  );
+$instance = array(
+  'field_name' => 'field_weather_location',
+  'entity_type' => 'user',
+  'bundle' => 'user',
+  'label' => 'Weather location',
+  'widget' => array(
+      'type' => 'text_textfield',
+      'weight' => '15',
+      ),
+    'description' => st('Enter a location on earth for which you would like '
+      . 'to see weather information presented.'),
+    );
+field_create_field($field);
+field_create_instance($instance);    
+    
+// *
+// * Weather language field
+// *
+$field = array(
+  'field_name' => 'field_weather_language',
+  'type' => 'list_text',
+  'translatable' => TRUE,
+  'settings' => array(
+      'allowed_values' => "en|English\nes|Spanish\nde|German\ntr|Turkish\nfr|French\n",
+      'allowed_values_function' => '',
+      ),
+    );
+$instance = array(
+  'field_name' => 'field_weather_language',
+  'entity_type' => 'user',
+  'bundle' => 'user',
+  'label' => 'Weather language',
+  'widget' => array(
+      'type' => 'options_select',
+      'weight' => '16',
+      ),
+    'description' => st('Enter the language in which you would like to see '
+      . 'weather information presented.'),
+    'default_value' => array(
+      array(
+        'value' => 'en',
+        ),
+      ),
+    );
+field_create_field($field);
+field_create_instance($instance);
+    
+// *
+// * Weather units field
+// * 
+$field = array(
+  'field_name' => 'field_weather_unit',
+  'type' => 'list_text',
+  'translatable' => TRUE,
+  'settings' => array(
+      'allowed_values' => "F|Fahrenheit\nC|Celsius\nK|Kelvin\nR|Rankine",
+      'allowed_values_function' => '',
+      ),
+    );
+$instance = array(
+  'field_name' => 'field_weather_unit',
+  'entity_type' => 'user',
+  'bundle' => 'user',
+  'label' => 'Weather units',
+  'widget' => array(
+      'type' => 'options_select',
+      'weight' => '17',
+      ),
+    'description' => st('Enter the measurement unit with which you would like '
+      . 'to see weather information presented.'),
+    'default_value' => array(
+      array(
+        'value' => 'F',
+        ),
+      ),
+    );
+    
+// Create the field and instance.
+field_create_field($field);
+field_create_instance($instance);
+

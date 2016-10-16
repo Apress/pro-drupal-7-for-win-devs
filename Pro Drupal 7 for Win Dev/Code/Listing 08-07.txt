@@ -1,0 +1,8 @@
+Listing 8-7. Modifying our function will product the expected result
+function weather_info_temp($in_temp, $unit, $unit_system) {
+  if (is_string($in_temp)) {
+    return null;
+  }
+
+  switch ($unit) {
+  ...

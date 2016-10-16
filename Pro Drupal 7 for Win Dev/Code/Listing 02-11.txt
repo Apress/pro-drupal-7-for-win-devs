@@ -1,0 +1,13 @@
+11.	Listing 2-11: The module loading function
+function module_load_all($bootstrap = FALSE) {
+  static $has_run = FALSE;
+
+  if (isset($bootstrap)) {
+    foreach (module_list(TRUE, $bootstrap) as $module) {
+      drupal_load('module', $module);
+    }
+    // $has_run will be TRUE if $bootstrap is FALSE.
+    $has_run = !$bootstrap;
+  }
+  return $has_run;
+}

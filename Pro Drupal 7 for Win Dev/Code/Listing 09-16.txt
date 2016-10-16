@@ -1,0 +1,18 @@
+Listing 9-16: Using expressions to add functionality to your query
+$query = db_select('node', 'n');
+$query
+  ->condition('n.created', time() - (14 * 86400), '>')
+  ->fields('n', array('title', 'created', 'type'));
+$query->addExpression('created - :offset', 'offset_by_an_hour', array(':offset' => 3600));
+$result = $query->execute();
+    
+foreach ($result as $record) {
+  $name = $record->title;
+  $type = $record->type;
+  $created = $record->created;
+  $offset = $record->offset_by_an_hour;
+  print($name . ' (' . $type . ')'
+    . ' created: ' . date("D, j M, Y \a\\t G:i", $created)
+    . ' hour before: ' . date("D, j M, Y \a\\t G:i", $offset)
+    . '<br>');
+}

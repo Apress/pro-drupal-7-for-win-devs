@@ -1,0 +1,10 @@
+•	Listing 6-6: Accessing field information for the current user
+global $user;
+$user_profile = user_load($user->uid);
+if (isset($user_profile->field_weather_unit['und'][0]['value'])
+  && ($user_profile->field_weather_unit['und'][0]['value'] != '')) {
+    $unit = substr($user_profile->field_weather_unit['und'][0]['value'], 0, 1);
+  }
+  else {
+    $unit = variable_get('default_units', 'F');
+  }

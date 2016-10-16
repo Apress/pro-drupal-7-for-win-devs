@@ -1,0 +1,4 @@
+13.	Listing 7-13. Hooking in to the page preprocessor from a module
+function weather_info_preprocess(&$variables) {
+  $variables['module_secret_word'] = 'goose';
+}

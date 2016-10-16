@@ -1,0 +1,21 @@
+•	Listing 5-15: The menu hook for weather_info
+function weather_info_menu() {
+  $items['admin/config/weather_info'] = array (
+    'title' => 'Weather Info Configuration',
+    'description' => 'Configuration settings for the Weather Information block.',
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('administer weather info'),
+    );
+ 
+  $items['admin/config/weather_info/settings'] = array (
+    'title' => 'Weather Information settings',
+    'description' => 'Set defaults and unit types for weather display.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('wx_admin_settings'),
+    'access arguments' => array('administer weather info'), 
+    );
+ 
+  return $items;
+}

@@ -1,0 +1,24 @@
+8.	Listing 7-8. The module’s theme hook is the place to register theme functions
+ function weather_info_theme() {
+  return array(
+    'current' => array(
+      'arguments' => array(
+        'img' => NULL,
+        'condition' => NULL,
+        'temp' => NULL,
+        'unit' => NULL,
+        'wind' => NULL,
+        'humidity' => NULL,
+        )
+      ),
+    'forecast' => array(
+      'arguments' => array(
+        'day' => NULL,
+        'img' => NULL,
+        'high' => NULL,
+        'low' => NULL,
+        )
+      ),
+    );
+}
+

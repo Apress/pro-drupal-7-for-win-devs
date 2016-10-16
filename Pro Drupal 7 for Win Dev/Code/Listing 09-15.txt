@@ -1,0 +1,6 @@
+Listing 9-15: Setting the distinct flag
+  $query = db_select('node', 'n');
+  $query
+    ->fields('n', array('title'));
+    $query->distinct();
+    $result = $query->execute();

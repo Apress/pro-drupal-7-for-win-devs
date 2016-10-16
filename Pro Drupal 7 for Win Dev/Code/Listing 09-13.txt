@@ -1,0 +1,20 @@
+Listing 9-13: Field aliases using the addField() method
+global $user;
+$query = db_select('node', 'n');
+$query
+  ->condition('u.uid', $user->uid, '=')
+  ->join('users', 'u', 'u.uid = n.uid');
+$query->addField('u', 'name', 'user_name');
+$query->addField('u', 'mail', 'user_mail');
+$query->addField('n', 'title', 'node_title');
+$query->addField('n', 'type', 'node_type');
+
+$result = $query->execute();
+
+foreach ($result as $record) {
+  $name = $record->user_name;
+  $mail = $record->user_mail;
+  $title = $record->node_title;
+  $type = $record->node_type;
+  print($title . ' (' . $type . ') , by ' . $name . ' (' . $mail . ')' . '<br>');
+}

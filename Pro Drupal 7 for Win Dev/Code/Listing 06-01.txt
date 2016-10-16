@@ -1,0 +1,17 @@
+•	Listing 6-1: The permissions hook
+function weather_info_permission() {
+  return array(
+    'administer weather info' =>  array(
+      'title' => t('Administer weather information'),
+      'description' => t('Set global site information for language, units, and location.'),
+    ),
+    'view weather info' =>  array(
+      'title' => t('View weather information'),
+      'description' => t('View the site-wide weather information on pages.'),
+    ),
+    'change weather location' =>  array(
+      'title' => t('Change weather location'),
+      'description' => t('Change the current location for weather information.'),
+      ),
+    );
+}

@@ -1,0 +1,9 @@
+Listing B-9. Shifting the Image Out and Up
+#preface-container {
+  background: transparent url('../i/CDEF-logo-menu.png') no-repeat center top;
+  min-height:334px;
+  width:960px;
+  position:relative;
+  top:-240px; 
+  z-index:100;
+}

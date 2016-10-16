@@ -1,0 +1,10 @@
+Listing 9-34: Using expressions on the db_merge() function
+db_merge('search_index')
+  ->key(array(
+    'word' => $word,
+    'sid' => $sid,
+    'type' => $module,
+  ))
+  ->fields(array('score' => $score))
+  ->expression('score', 'score + :score', array(':score' => $score))
+  ->execute();

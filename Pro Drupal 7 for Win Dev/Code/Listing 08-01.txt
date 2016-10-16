@@ -1,0 +1,3 @@
+Listing 8-1. The PHP information page
+<?php
+phpinfo();

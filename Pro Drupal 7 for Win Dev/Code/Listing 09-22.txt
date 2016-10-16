@@ -1,0 +1,18 @@
+Listing 9-22: the addTag() method provides information so other modules can decide if they are interested in our query
+$query = db_select('role', 'r');
+$query
+  ->condition('p.module', 'node', '=')
+  ->condition('r.name', 'administrator', '=')
+  ->fields('r', array('name'))
+  ->fields('p', array('permission', 'module'))
+  ->join('role_permission', 'p', 'r.rid = p.rid')
+;
+$query->orderBy('name');
+$query->orderBy('module');
+$query->orderBy('permission');
+$query->addTag('get_permissions');
+$result = $query->execute();
+    
+foreach ($result as $record) {
+  print($record->name . ', ' . $record->module . ', ' . $record->permission . '<br>');
+}

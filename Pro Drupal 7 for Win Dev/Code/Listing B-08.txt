@@ -1,0 +1,6 @@
+Listing B-8. Adding an Image That Will Be Shifted Up
+#preface-container {
+  background: transparent url('../i/CDEF-logo-menu.png') no-repeat center top;
+  min-height:334px;
+  width:960px;
+}

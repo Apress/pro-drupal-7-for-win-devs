@@ -1,0 +1,10 @@
+Listing B-16. The Preprocess Hook
+function cdef_omega_preprocess_node_recent_block(&$vars) {
+  $content = '';
+  foreach ($vars['nodes'] as $recent_node) {
+    $variables['node_title'] = $recent_node->title;
+    $variables['node_id'] = $recent_node->nid;
+    $content .= theme('recent_list', $variables);
+  }
+  $vars['content'] = $content;
+}

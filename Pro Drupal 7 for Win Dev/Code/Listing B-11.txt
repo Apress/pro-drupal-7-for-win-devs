@@ -1,0 +1,31 @@
+Listing B-11. Header Box Formatting
+#region-header_first,
+#region-header_second {
+  border:3pt solid #3399cc;
+  background-color:#336666;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+#region-header_first,
+#region-header_second {
+  height: 180px;
+  margin:6px;
+  color:#f1f1ef;
+  text-align:center;
+  z-index:200;
+}
+
+#region-header_first a:link, 
+#region-header_second a:link {
+  color:#a1f1ef;
+}
+
+#region-header_first h2.block-title, 
+#region-header_second h2.block-title {
+  color:#f1f1ef;
+  font-size:16pt;
+  font-family:Arial;
+  text-transform:uppercase;
+}

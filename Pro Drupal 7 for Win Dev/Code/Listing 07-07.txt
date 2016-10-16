@@ -1,0 +1,18 @@
+7.	Listing 7-7. Another theming function
+function theme_forecast($variables) {
+  static $day = 0;
+
+  $day_of_week = $variables['day'];
+  $img = $variables['img'];
+  $high = $variables['high'];
+  $low = $variables['low'];
+
+  ++$day;
+  $content = null;
+  $content .= "<div class='forecast-{$day}'>";
+  $content .= "{$day_of_week}<br/>";
+  $content .= "<img src='http://www.google.com{$img}'/><br/>";
+  $content .= "{$high}/{$low}<br/>";
+  $content .= '</div>';
+  return $content;
+}

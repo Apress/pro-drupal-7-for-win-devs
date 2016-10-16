@@ -1,0 +1,16 @@
+•	Listing 5-2: A basic module file for declaring a block
+<?php
+// $Id$
+
+function weather_info_block_info() {
+  $blocks['user_custom'] = array(
+    'info'    => t('Weather block custom for each user'),
+    );
+  return $blocks;
+}
+
+function weather_info_block_view($delta='') {
+  $block['subject'] = t('Get Weather');
+  $block['content'] = t('Initial content goes here.');
+  return $block;
+}

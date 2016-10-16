@@ -1,0 +1,47 @@
+•	Listing 5-16: The weather administration form
+function wx_admin_settings() {
+  $form['wx_settings'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Weather defaults')
+    );
+
+  $form['wx_settings']['default_location'] = array (
+    '#type' => 'textfield',
+    '#title' => t('Default location'),
+    '#default_value' => variable_get('default_location', null),
+    '#size' => 20,
+    '#maxlengh' => 20,
+    '#description' => t('Enter a location on earth to act as the default for the site.'),
+    );	
+  
+  $form['wx_settings']['default_units'] = array (
+    '#type' => 'radios',
+    '#title' => t('Default units'),
+    '#options' => array(
+        'F' => t('Fahrenheit'),
+        'C' => t('Celsius'),
+        'K' => t('Kelvin'),
+        'R' => t('Rankine'),
+        ),
+      '#default_value' => variable_get('default_units', 'F'),
+      '#description' => t('Select the units desired for display of temperature.'),
+      );	
+
+  $form['wx_settings']['default_language'] = array (
+    '#type' => 'select',
+    '#title' => t('Language'),
+    '#options' => array(
+        'en' => t('English'),
+        'fr' => t('French'),
+        'it' => t('Italian'),
+        'de' => t('German'),
+        'es' => t('Spanish'),
+        'tr' => t('Turkish'),
+        ),
+      '#default_value' => variable_get('default_language', 'en'),
+      '#description' => t('Select the language desired.'),
+      );	
+
+  $form['#submit'][] = 'wx_admin_settings_submit';
+  return system_settings_form($form);
+}

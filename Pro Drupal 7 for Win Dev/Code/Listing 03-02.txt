@@ -1,0 +1,11 @@
+•	Listing 3-2: Classes are created on-the-fly and properties set and returned to the caller
+function drupal_anonymous_user($session = '') {
+  $user = new stdClass();
+  $user->uid = 0;
+  $user->hostname = ip_address();
+  $user->roles = array();
+  $user->roles[DRUPAL_ANONYMOUS_RID] = 'anonymous user';
+  $user->session = $session;
+  $user->cache = 0;
+  return $user;
+}

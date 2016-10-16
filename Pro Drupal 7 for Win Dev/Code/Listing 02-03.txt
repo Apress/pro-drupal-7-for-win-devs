@@ -1,0 +1,46 @@
+3.	Listing 2-3: A typical Drupal settings file
+<?php
+// $Id: default.settings.php,v 1.50 2010/08/08 19:35:49 dries Exp $
+
+$databases = array (
+  'default' => 
+  array (
+    'default' => 
+    array (
+      'driver' => 'mysql',
+      'database' => 'drupal7',
+      'username' => 'brian',
+      'password' => 'super-secret-password',
+      'host' => 'localhost',
+      'port' => '',
+      'prefix' => '',
+    ),
+  ),
+);
+
+$update_free_access = FALSE;
+$drupal_hash_salt = 'V7lO82TATKeB2rlow-xK8ZNABIa6yoNuRb3gt4wrCEm';
+# $base_url = 'http://www.example.com';  // NO trailing slash!
+ini_set('session.gc_probability', 1);
+ini_set('session.gc_divisor', 100);
+ini_set('session.gc_maxlifetime', 200000);
+ini_set('session.cookie_lifetime', 2000000);
+# ini_set('pcre.backtrack_limit', 200000);
+# ini_set('pcre.recursion_limit', 200000);
+# $cookie_domain = 'example.com';
+# $conf['site_name'] = 'My Drupal site';
+# $conf['theme_default'] = 'garland';
+# $conf['anonymous'] = 'Visitor';
+# $conf['maintenance_theme'] = 'bartik';
+# $conf['reverse_proxy'] = TRUE;
+# $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
+# $conf['reverse_proxy_addresses'] = array('a.b.c.d', ...);
+# $conf['omit_vary_cookie'] = TRUE;
+# $conf['locale_custom_strings_en'][''] = array(
+#   'forum'      => 'Discussion board',
+#   '@count min' => '@count minutes',
+# );
+# $conf['blocked_ips'] = array(
+#   'a.b.c.d',
+# );
+# $conf['allow_authorize_operations'] = FALSE;

@@ -1,0 +1,32 @@
+4.	Listing 2-4: The page cache bootstrapping function (edited for clarity)
+function _drupal_bootstrap_page_cache() {
+  global $user;
+
+  // Check for a cache mode force from settings.php.
+  if (variable_get('page_cache_without_database')) {
+    $cache_enabled = TRUE;
+  }
+  else {
+    drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES, FALSE);
+    $cache_enabled = variable_get('cache');
+  }
+  drupal_block_denied(ip_address());
+  // If there is no session cookie and cache is enabled (or forced), try
+  // to serve a cached page.
+  if (!isset($_COOKIE[session_name()]) && $cache_enabled) {
+    // Get the page from the cache.
+    $cache = drupal_page_get_cache();
+    // If there is a cached page, display it.
+    if (is_object($cache)) {
+      header('X-Drupal-Cache: HIT');
+      // Restore the metadata cached with the page.
+      $_GET['q'] = $cache->data['path'];
+      drupal_set_title($cache->data['title'], PASS_THROUGH);
+      drupal_serve_page_from_cache($cache);
+      exit;
+    }
+    else {
+      header('X-Drupal-Cache: MISS');
+    }
+  }
+}

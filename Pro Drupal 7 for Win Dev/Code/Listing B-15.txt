@@ -1,0 +1,7 @@
+Listing B-15. The Theme Function
+function cdef_omega_recent_list($variables) {
+  $title = $variables['node_title'];
+  $id = $variables['node_id'];
+  $content = '<div class="recent-title">' . l($title, 'node/' . $id) . '</div>';
+  return $content;
+}

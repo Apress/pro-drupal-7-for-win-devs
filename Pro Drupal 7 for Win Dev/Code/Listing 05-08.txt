@@ -1,0 +1,24 @@
+•	Listing 5-8: the weather_info_get_weather helper function
+function weather_info_get_weather($location, $language) {
+  $requestAddress = sprintf('http://www.google.com/ig/api?weather=%s&hl=%s',
+    url($location), $language);
+  try {
+    $xml_str = utf8_encode(file_get_contents($requestAddress, 0));
+    $weather = new SimplexmlElement($xml_str);
+
+    if (isset($weather->weather->problem_cause)) {
+      throw new Exception (t("Can't load %loc", array('%loc' => $location)));
+    }
+
+    if(!$weather) {
+      throw new Exception ('weather failed');
+    }
+  } catch (Exception $err) {
+    watchdog ('weather_info', 'Cannot get weather for %location: %message', 
+      array('%location' => $location, '%message' => $err->getMessage()), 
+      WATCHDOG_ERROR);
+    return null;
+  }
+
+  return $weather;
+}

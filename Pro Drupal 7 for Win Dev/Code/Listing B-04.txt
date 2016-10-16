@@ -1,0 +1,7 @@
+Listing B-4. Modifying the .info File to Recognize a Style Sheet File
+name        = CDEvolution Theme
+description = Sub-themed from Omega starter kit
+screenshot  = screenshot.png
+core        = 7.x
+base theme  = omega
+project     = "cdef_omega"

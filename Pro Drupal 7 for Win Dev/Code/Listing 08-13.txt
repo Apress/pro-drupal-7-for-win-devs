@@ -1,0 +1,9 @@
+Listing 8-13. Caling a page and checking the results
+function testDisplayLocation() {
+  variable_set('default_units', 'R');
+  variable_set('default_language', 'de');
+  variable_set('default_location', 'san francisco');
+
+  $this->drupalGet('node');
+  $this->assertRaw(t('San Francisco, CA'), t('Check that the block displayed'));
+}

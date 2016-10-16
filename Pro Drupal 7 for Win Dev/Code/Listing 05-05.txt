@@ -1,0 +1,10 @@
+•	Listing 5-5: Grabbing a form and rendering it as HTML output
+function weather_info_block_view($delta='') {
+  $block['subject'] = t('Get Weather');
+
+  $temp = drupal_get_form('weather_location_form');
+  $block_content = drupal_render($temp);
+  $block['content'] = $block_content;
+
+  return $block;
+}

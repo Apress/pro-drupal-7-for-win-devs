@@ -1,0 +1,5 @@
+•	Listing 5-7: Our form_submit function
+function weather_location_form_submit($form, $form_state) {
+  $location = trim($form_state['values']['weather_location']);
+  variable_set('current_location', $location);
+}

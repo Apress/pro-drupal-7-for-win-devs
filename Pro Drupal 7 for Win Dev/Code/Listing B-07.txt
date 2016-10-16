@@ -1,0 +1,4 @@
+Listing B-7. Using a Negative text-indent to Hide Text
+.site-name-slogan {
+  text-indent:-2000px;
+}

@@ -1,0 +1,44 @@
+10.	Listing 2-10: The full bootstrap function
+function _drupal_bootstrap_full() {
+  $called = &drupal_static(__FUNCTION__);
+
+  if ($called) {
+    return;
+  }
+  $called = 1;
+  // ...core include files included here
+  // Detect string handling method
+  unicode_check();
+  // Undo magic quotes
+  fix_gpc_magic();
+  // Load all enabled modules
+  module_load_all();
+  // Make sure all stream wrappers are registered.
+  file_get_stream_wrappers();
+
+  $test_info = &$GLOBALS['drupal_test_info'];
+  if (!empty($test_info['in_child_site'])) {
+    // Running inside the simpletest child site, log fatal errors to test
+    // specific file directory.
+    ini_set('log_errors', 1);
+    ini_set('error_log', 'public://error.log');
+  }
+
+  // Initialize $_GET['q'] prior to invoking hook_init().
+  drupal_path_initialize();
+
+  // Let all modules take action before the menu system handles the request.
+  // We do not want this while running update.php.
+  if (!defined('MAINTENANCE_MODE') || MAINTENANCE_MODE != 'update') {
+    // Prior to invoking hook_init(), initialize the theme (potentially a custom
+    // one for this page), so that:
+    // - Modules with hook_init() implementations that call theme() or
+    //   theme_get_registry() don't initialize the incorrect theme.
+    // - The theme can have hook_*_alter() implementations affect page building
+    //   (e.g., hook_form_alter(), hook_node_view_alter(), hook_page_alter()),
+    //   ahead of when rendering starts.
+    menu_set_custom_theme();
+    drupal_theme_initialize();
+    module_invoke_all('init');
+  }
+}

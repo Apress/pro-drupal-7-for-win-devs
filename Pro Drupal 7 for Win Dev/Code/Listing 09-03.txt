@@ -1,0 +1,22 @@
+Listing 9-3: Defining a master/slave configuration
+$databases['default']['default'] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal7master',
+  'username' => 'username',
+  'password' => 'super-secret-master',
+  'host' => 'dbserver1',
+);
+$databases['default']['slave'][] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal7firstslave',
+  'username' => 'firstslave',
+  'password' => 'super-secret-slave-one',
+  'host' => 'dbserver2',
+);
+$databases['default']['slave'][] = array(
+  'driver' => 'mysql',
+  'database' => 'drupal7secondslave',
+  'username' => 'secondslave',
+  'password' => 'super-secret-slave-two',
+  'host' => 'dbserver3',
+);

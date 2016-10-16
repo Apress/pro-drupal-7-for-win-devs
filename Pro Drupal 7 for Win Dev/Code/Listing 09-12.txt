@@ -1,0 +1,8 @@
+Listing 9-12: Dynamic query with a join
+$query = db_select('node', 'n');
+$query
+  ->condition('u.uid', $user->uid, '=')
+  ->fields('u', array('name', 'mail'))
+  ->fields('n', array('title', 'type'))
+  ->join('users', 'u', 'u.uid = n.uid');
+$result = $query->execute();

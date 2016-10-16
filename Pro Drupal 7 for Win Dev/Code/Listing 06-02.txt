@@ -1,0 +1,6 @@
+•	Listing 6-2: Checking to see if a user has the permission to access certain content
+function weather_info_block_view($delta='') {
+  if (!user_access('view weather info')) {
+    return null;
+  }
+...

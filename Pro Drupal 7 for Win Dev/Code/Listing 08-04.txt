@@ -1,0 +1,3 @@
+Listing 8-4. Sample test case for temperature
+    $out_temp = weather_info_temp(32, 'C', 'US');
+    $this->assertEqual($out_temp, '0&deg;C', 'F to C conversion.');

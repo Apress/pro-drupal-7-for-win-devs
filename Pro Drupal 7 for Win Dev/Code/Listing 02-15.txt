@@ -1,0 +1,19 @@
+15.	Listing 2-15: The menu calls back the node_page_view function
+function node_page_view($node) {
+  // If there is a menu link to this node, the link becomes the last part
+  // of the active trail, and the link name becomes the page title.
+  // Thus, we must explicitly set the page title to be the node title.
+  drupal_set_title($node->title);
+  $uri = entity_uri('node', $node);
+  // Set the node path as the canonical URL to prevent duplicate content.
+  drupal_add_html_head_link(array(
+    'rel' => 'canonical', 
+    'href' => url($uri['path'], $uri['options'])), TRUE);
+  // Set the non-aliased path as a default shortlink.
+  drupal_add_html_head_link(array(
+    'rel' => 'shortlink', 
+    'href' => url($uri['path'], array_merge($uri['options'], 
+      array('alias' => TRUE)))
+    ), TRUE);
+  return node_show($node);
+}

@@ -1,0 +1,8 @@
+Listing 8-12. Posting to a form and evaluating the results
+$edit = array (
+  'blocks[weather_info_user_custom][region]' => 'sidebar_second',
+  );
+
+$this->drupalPost('admin/structure/block', $edit, 'Save blocks');
+$this->assertRaw(t('The block settings have been updated.'), 
+  t('Check that configuration is saved'));

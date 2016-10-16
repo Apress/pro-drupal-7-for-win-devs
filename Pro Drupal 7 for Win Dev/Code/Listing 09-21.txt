@@ -1,0 +1,7 @@
+Listing 9-21: Counting the records returned from a query
+$query = db_select('role_permission', 'p');
+$query
+  ->condition('p.module', 'node', '=')
+  ->fields('p', array('permission'))
+;
+$num_rows = $query->countQuery()->execute()->fetchField();

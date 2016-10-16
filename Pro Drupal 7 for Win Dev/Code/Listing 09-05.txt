@@ -1,0 +1,18 @@
+Listing 9-5: Placeholders in action
+global $user;
+$uid = $user->uid;
+$result = db_query (
+  'SELECT n.nid, n.title, n.created '
+  . 'FROM {node} n '
+  . 'WHERE n.uid = :uid AND n.created > :created'
+  , array(
+    ':uid' => $uid,
+    ':created' => REQUEST_TIME - 3600,
+    )
+  );
+
+  foreach ($result as $record) {
+    $nid = $record->nid;
+    $title = $record->title;
+    $created = $record->created;
+  }

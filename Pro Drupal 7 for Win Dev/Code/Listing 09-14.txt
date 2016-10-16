@@ -1,0 +1,12 @@
+Listing 9-14: SELECT statement created using addField()
+SELECT 
+  u.name AS user_name, 
+  u.mail AS user_mail, 
+  n.title AS node_title, 
+  n.type AS node_type
+FROM 
+  {node} n
+INNER JOIN 
+  {users} u ON u.uid = n.uid
+WHERE 
+  (u.uid = :db_condition_placeholder_0)

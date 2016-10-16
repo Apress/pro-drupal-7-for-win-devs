@@ -1,0 +1,11 @@
+•	Listing 5-11: The form validation hook that checks to see if the location is valid
+include_once ('weather_info.inc');
+
+function weather_location_form_validate($form, $form_state) {
+  $location = trim($form_state['values']['weather_location']);
+  $weather = weather_info_get_weather($location, 'en');
+  if (!$weather) {
+    form_set_error('weather_location', t('Location %location not found.', 
+      array('%location' => $location)));
+  }
+}

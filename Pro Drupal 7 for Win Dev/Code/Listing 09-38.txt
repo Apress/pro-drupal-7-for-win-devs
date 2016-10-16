@@ -1,0 +1,16 @@
+Listing 9-38: Trapping errors using try...catch
+try {
+  $records_merged = db_merge('weather_info')
+    ->key(array('location' => 'San Francisco, ZA'))
+    ->fields(array(
+        'location' => 'San Francisco, CA',
+        'language' => 'us',
+        ))
+    ->updateFields(array(
+        'language' => 'es',
+        ))
+    ->execute();
+}
+catch(exception $err) {
+  drupal_set_message("Whoops! Trouble merging data: $err", 'error');
+}

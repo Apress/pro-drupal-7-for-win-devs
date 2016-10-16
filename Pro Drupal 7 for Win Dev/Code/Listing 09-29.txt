@@ -1,0 +1,20 @@
+Listing 9-29: Processing an array of values
+  $values = array(
+    array('San Luis Obispo', 'en', 'R', 1, REQUEST_TIME),
+    array('Cupertino', 'en', 'F', 1, REQUEST_TIME),
+    array('San Diego', 'es', 'C', 1, REQUEST_TIME),
+    );
+  
+  $query = db_insert('weather_info')
+    ->fields(array(
+       'location', 
+       'language', 
+       'units', 
+       'uid', 
+       'timestamp'
+       ));
+  foreach($values as $record) {
+    $query->values($record);
+  }
+  $hid = $query->execute();
+  print $hid;

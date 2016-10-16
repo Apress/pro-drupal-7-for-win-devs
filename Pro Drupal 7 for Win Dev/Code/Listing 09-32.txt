@@ -1,0 +1,8 @@
+Listing 9-32: A dynamic merge query using db_merge()
+$records_merged = db_merge('weather_info')
+  ->key(array('location' => 'San Diego'))
+  ->fields(array(
+      'location' => 'San Diego, CA',
+      'language' => 'es',
+      ))
+  ->execute();

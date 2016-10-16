@@ -1,0 +1,15 @@
+Listing 9-35: Arrayed operators for the condition() property
+$query->condition('name', 
+  array(
+    'location', 'language', 'unit',
+    ),
+  'IN'
+);
+// Becomes: name IN ('location', 'language', 'unit')
+
+
+$query->condition('timestamp', 
+  array(REQUEST_TIME – 7200, REQUEST_TIME - 3600), 
+  'BETWEEN'
+);
+// Becomes: timestamp BETWEEN 1291305433 AND 1291309033

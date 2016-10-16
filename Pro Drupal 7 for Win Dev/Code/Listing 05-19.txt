@@ -1,0 +1,49 @@
+•	Listing 5-19: The completed weather information block
+function weather_info_block_view($delta='') {
+  $block = null;
+  $block_content = null;
+
+  $unit = variable_get('default_units', 'F');
+  $language = variable_get('default_language', 'en');
+  $location = variable_get('current_location', null);
+  if ($location) {
+    $weather = weather_info_get_weather($location, $language);
+    if ($weather) {
+      $unit_system = $weather->weather->forecast_information->unit_system['data'];
+      $current = $weather->weather->current_conditions;
+      $block_content .= '<div class="currentConditions">';
+      $block_content .= "<img src='http://www.google.com/{$current->icon['data']}'/>";
+      $block_content .= "<br/>";
+      $block_content .= sprintf('%s, %s<br/>',
+        $current->condition['data'], weather_info_temp($current->temp_f['data'], 
+        $unit, $unit_system));
+      $block_content .= $current->wind_condition['data'] . '<br/>';
+      $block_content .= $current->humidity['data'];
+      $block_content .= '</div>';
+
+      $day = 1;
+      foreach($weather->weather->forecast_conditions as $new) {
+        $high = weather_info_temp((int)$new->high['data'], $unit, $unit_system);
+        $low = weather_info_temp((int)$new->low['data'], $unit, $unit_system);
+
+        $block_content .= "<div class='forecast-" . $day++ . "'>";
+        $block_content .= "{$new->day_of_week['data']}<br/>";
+        $block_content .= "<img src='http://www.google.com/{$new->icon['data']}'/><br/>";
+        $block_content .= "{$high}/{$low}<br/>";
+        $block_content .= '</div>';
+      }
+      $block['subject'] = $weather->weather->forecast_information->city['data'];
+    }
+    else {
+      form_set_error('weather_location', 
+        t('Location @loc not found.', array('@loc' => $location)));
+      variable_set('current_location', null);
+      $block['subject'] = t('Get Weather');
+    }
+  }
+
+  $temp = drupal_get_form('weather_location_form');
+  $block_content .= drupal_render($temp);
+  $block['content'] = $block_content;
+  return $block;
+}

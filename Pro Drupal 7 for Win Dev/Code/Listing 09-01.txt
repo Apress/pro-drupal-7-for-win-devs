@@ -1,0 +1,23 @@
+Listing 9-1: Classic ASP code using the ADODB object
+<%@ LANGUAGE = "VBScript" %>
+<XMLNEWS>
+<%
+set objConnection = Server.CreateObject("ADODB.Connection")
+DBFile = Server.MapPath("data\Newsfeed.mdb")
+objConnection.Open("driver={Microsoft Access Driver (*.mdb)}; DBQ=" & DBFile)
+set RS = objConnection.Execute("SELECT * FROM News " &
+    "WHERE Date > #" & DaysAgo(5) & "# " &
+    "ORDER BY Date DESC, Location, Headline")
+do until RS.EOF 
+    %>
+    <ITEM DATE="<%=RS("Date")%>" LOCATION="<%=RS("Location")%>">
+        <URL><%=RS("Url")%></URL>
+        <HEADLINE><%=RS("Headline")%></HEADLINE>
+        <ABSTRACT><%=RS("Abstract")%></ABSTRACT>
+    </ITEM>
+    <% 
+    RS.MoveNext
+Loop
+objConnection.Close
+%>
+</XMLNEWS>

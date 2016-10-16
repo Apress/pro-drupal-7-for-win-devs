@@ -1,0 +1,33 @@
+Listing B-12. Styling Images and Links
+#follow-block {
+  text-align:center;
+  background: url('../i/Follow-Buttons-Bar.png') no-repeat bottom center;
+  min-height:120px;
+  overflow:visible;
+}
+
+a.rss-image,
+a.facebook-image,
+a.twitter-image {
+  text-indent:-2000px;
+  height:96px;
+  width:90px;
+  display:inline-block;
+}
+
+a.rss-image {
+  background: url('../i/rss.png') no-repeat bottom center;
+}
+
+a.facebook-image {
+  background: url('../i/facebook.png') no-repeat bottom center;
+}
+
+a.twitter-image {
+  background: url('../i/twitter.png') no-repeat bottom center;
+}
+
+#region-sidebar_first {
+  position:relative;  
+  top:-240px;
+}

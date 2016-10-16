@@ -1,0 +1,36 @@
+Listing 8-11. Extending the DrupalWebTestCase class
+class WeatherBlockTest extends DrupalWebTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => t('Weather block tests'),
+      'description' => t('Tests the weather block.'),
+      'group' => 'Weather info',
+      );
+  }
+
+  public function setUp() {
+    // Enable any modules required for the test
+    parent::setUp(array(
+      'weather_info', 
+      'block',
+    )); 
+    // Create and log in our privileged user.
+    $this->test_user = $this->drupalCreateUser(array(
+      'view weather info',
+      'change weather location',
+      'administer weather info',
+      'administer site configuration', 
+      'administer users', 
+      'access user profiles',
+      'administer blocks',
+      'access administration pages',
+      )); 
+    $this->drupalLogin($this->test_user);
+  
+  function testDoNothing() {
+    $this->assertNull(null, 'just a stub');
+  }
+  
+  //... actual tests go here
+}

@@ -1,0 +1,5 @@
+Listing 9-23: A query alter hook for a tagged query
+function weather_info_query_get_permissions_alter(QueryAlterableInterface $query) {
+  $order =& $query->getOrderBy();
+  $order['permission'] = 'DESC';
+}

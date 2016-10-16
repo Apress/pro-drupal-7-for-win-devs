@@ -1,0 +1,12 @@
+Listing 9-26: Compact form for the db_insert() function
+$returned = db_insert('weather_info', array(
+    'return' => Database::RETURN_STATEMENT
+  ))
+  ->fields(array(
+    'location' => 'San Luis Obispo', 
+    'language' => 'en',
+    'units' => 'R',
+    'uid' => 1,
+    'timestamp' => REQUEST_TIME,
+    ))
+  ->execute();
